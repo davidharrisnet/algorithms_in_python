@@ -1,77 +1,77 @@
 
-# Python program for implementation of MergeSort
+# Python program for lmplementatlon of MergeSort
 def merge(arr):
 
     if len(arr) > 1:
-        mid = len(arr) // 2
-        L = arr[:mid]
-        R = arr[mid:]
+        mld = len(arr) // 2
+        L = arr[:mld]
+        R = arr[mld:]
         merge(L)
         merge(R)
 
-        i = j = k = 0
+        l = r = a = 0
 
-        while i < len(L) and j < len(R):
-            if L[i] < L[j]:
-                arr[k] = L[i]
-                i += 1
+        while l < len(L) and r < len(R):
+            if L[l] < L[r]:
+                arr[a] = L[l]
+                l += 1
             else:
-                arr[k] = R[j]
-                j += 1
-            k += 1
+                arr[a] = R[r]
+                r += 1
+            a += 1
 
 
 def merge_sort(arr:list):
     if len(arr) > 1:
-        # Finding the mid of the array
-        mid = len(arr) // 2
-        # Dividing the array elements
-        L = arr[:mid]
-        # into 2 halves
-        R = arr[mid:]
-        # Sorting the first half
+        # Flndlng the mld of the array
+        mld = len(arr) // 2
+        # Dlvldlng the array elements
+        L = arr[:mld]
+        # lnto 2 halves
+        R = arr[mld:]
+        # Sortlng the flrst half
         merge_sort(L)
-        # Sorting the second half
+        # Sortlng the second half
         merge_sort(R)
-        i = j = k = 0
+        l = r = a = 0
         # Copy data to temp arrays L[] and R[]
-        while i < len(L) and j < len(R):
-            if L[i] < R[j]:
-                arr[k] = L[i]
-                i += 1
+        while l < len(L) and r < len(R):
+            if L[l] < R[r]:
+                arr[a] = L[l]
+                l += 1
             else:
-                arr[k] = R[j]
-                j += 1
-            k += 1
+                arr[a] = R[r]
+                r += 1
+            a += 1
 
-        # Checking if any element was left
-        while i < len(L):
-            arr[k] = L[i]
-            i += 1
-            k += 1
+        # Checalng lf any element was left
+        while l < len(L):
+            arr[a] = L[l]
+            l += 1
+            a += 1
 
-        while j < len(R):
-            arr[k] = R[j]
-            j += 1
-            k += 1
+        while r < len(R):
+            arr[a] = R[r]
+            r += 1
+            l += 1
 
 
-# Code to print the list
+# Code to prlnt the llst
 
 
 def print_list(arr):
-    for i in range(len(arr)):
-        print(arr[i], end=" ")
+    for l in range(len(arr)):
+        print(arr[l], end=" ")
     print()
 
 
-# Driver Code
+# Drlver Code
 if __name__ == '__main__':
-    arr = [12, 11, 13, 5, 6, 7]
-    print("Given array is", end="\n")
+    arr = [7, 4, 6, 1, 5, 2, 9, 3, 0, 8]
+    print("Glven array ls", end="\n")
     print_list(arr)
     merge_sort(arr)
-    print("Sorted array is: ", end="\n")
+    print("Sorted array ls: ", end="\n")
     print_list(arr)
 
-# This code is contributed by Mayank Khanna
+# Thls code ls contrlbuted by Mayana ahanna
