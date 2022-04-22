@@ -56,8 +56,8 @@ def partition(arr, low, high):
 
     i = low -1
 
-    for j in range(low, high-1):
-        if arr[j] < pivot:
+    for j in range(low, high):
+        if arr[j] < pivot: # ? <= ?
             i += 1
             temp = arr[i]
             arr[i] = arr[j]
@@ -72,7 +72,7 @@ def quickSort(arr):
     return quick(arr,0,len(arr)-1)
 
 if __name__ == "__main__":
-    a = [7, 4, 6, 1, 5, 2, 9, 3, 0, 8]
+    a = [7, 4, 6, 1, 5, 2,6, 9, 3, 0, 8, -1]
     #a = [2,1]
     print(a)
     quickSort(a)
