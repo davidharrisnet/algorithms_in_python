@@ -1,95 +1,86 @@
 import os
 
-class InversionCount :
-    
-    def __init__(self):
-        self.inversion_count = 0
-
-    def sort(self, arr, left, right):
-        
-        if left < right:
-            
-            middle = int(left + (right-left)/2)
-           
-            self.sort(arr, left, middle)
-            self.sort(arr, middle + 1, right)
+def merge(arr, l, m, r):
+    global inversion_count
+    n1 = m - l + 1
+    n2 = r - m
  
-            
-            self.merge(arr, left, middle, right)
-        	
-
-	        
-    def merge(self, arr, l, m, r):
-    		        
-        left_size = m - l + 1
-        right_size = r - m
+    # create temp arrays
+    L = [0] * (n1)
+    R = [0] * (n2)
  
-        
-        L =  [None] * left_size
-        R =  [None] * right_size
+    # Copy data to temp arrays L[] and R[]
+    for i in range(0, n1):
+        L[i] = arr[l + i]
  
-       
-        for i in range(left_size):
-            L[i] = arr[l + i];
-        
-        for j in range(right_size):
-            R[j] = arr[m + 1 + j]
+    for j in range(0, n2):
+        R[j] = arr[m + 1 + j]
  
-       
-        
-        i = 0 
-        j = 0
+    # Merge the temp arrays back into arr[l..r]
+    i = 0     # Initial index of first subarray
+    j = 0     # Initial index of second subarray
+    k = l     # Initial index of merged subarray
  
-       
-        k = l
-        while i < left_size and j < right_size:
-            if L[i] <= R[j]: 
-                arr[k] = L[i]
-                i = i + 1
-            
-            else:
-                arr[k] = R[j];
-               
-                j = j + 1
-                leftInL = left_size -i ;
-                    
-                self.inversion_count = self.inversion_count + leftInL
-                                                                            
-            k = k + 1
-        
- 
-        
-        while i < left_size:
+    while i < n1 and j < n2:
+        if L[i] <= R[j]:
             arr[k] = L[i]
-            i = i + 1
-            k = k + 1          
-        
- 
-        
-        while j < right_size:
+            i += 1
+        else:
             arr[k] = R[j]
             j += 1
-            k += 1
-           
-       
-    def inversionCount(self, arr, left, right):	    
-	    self.sort(arr, left, right)
-
+            inversion_count = inversion_count + n1 -i
+        k += 1
+        
+    # Copy the remaining elements of L[], if there
+    # are any
+    while i < n1:
+        arr[k] = L[i]
+        i += 1
+        k += 1
  
-if __name__ == "__main__":
-   
-    #arr = [1, 3, 5, 2]
+    # Copy the remaining elements of R[], if there
+    # are any
+    while j < n2:
+        arr[k] = R[j]
+        j += 1
+        k += 1
+ 
+# l is for left index and r is right index of the
+# sub-array of arr to be sorted
+ 
+ 
+def mergeSort(arr, l, r):
+    if l < r:
+ 
+        # Same as (l+r)//2, but avoids overflow for
+        # large l and h
+        m = l+(r-l)//2
+ 
+        # Sort first and second halves
+        mergeSort(arr, l, m)
+        mergeSort(arr, m+1, r)
+        merge(arr, l, m, r)
+def big_array():
     here = os.getcwd()
-    textfile = os.path.join(here,"algorithms", "inversions", "IntegerArray.txt")
+    textfile = os.path.join(here, "IntegerArray.txt")
     
     f = open(textfile,"r")
     text = f.readlines()
     arr = [ int(t.replace('\n','')) for t in text ]
+    return arr
 
-    ob = InversionCount()
-    x = ob.inversionCount(arr, 0, len(arr) -1)
-
-
-    
-    #print(arr)
-    print(ob.inversion_count)
+inversion_count = 0
+# Driver code to test above
+#arr = [1, 3, 5, 2, 4, 6]
+arr = big_array()
+n = len(arr)
+print("Given array is")
+#for i in range(n):
+#    print("%d" % arr[i],end=" ")
+ 
+mergeSort(arr, 0, n-1)
+#print("\n\nSorted array is")
+#for i in range(n):
+#    print("%d" % arr[i],end=" ")
+print()
+print(inversion_count)
