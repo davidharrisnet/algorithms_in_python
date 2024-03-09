@@ -9,7 +9,7 @@ def target_sum(arr, total):
 
 
     if arr[0] > total:
-        return false
+        return False
     else:
         while arr[j] > total and i < j:
             j -= 1
