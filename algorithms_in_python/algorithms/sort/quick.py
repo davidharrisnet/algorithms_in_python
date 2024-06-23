@@ -1,39 +1,43 @@
 from algorithms_in_python.utils.lists import random_int_list
 import random
-import sys
-print(sys.path)
+
 def quicksort(arr, low, high):
-    if low < high:
-        pivot = get_random_pivot(low, high,arr)
-        index = partition_random(arr,low,high,pivot)
+    if low < high:       
+        index = partition_high(arr,low,high)
 
         quicksort(arr,low, index -1)
-        quicksort(arr, index+1, high)
+        quicksort(arr, index + 1, high)
 
-def get_random_pivot(low,high,arr):
-    return arr[random.randint(low,high)]
+def get_random_index(low,high,arr):
+    
+    return random.randint(low,high)
+   
 
-def partition_random(arr,low,high,pivot):
-    while low < high:
-        while arr[low] < pivot:
-            low+= 1
-        while arr[high] > pivot:
-            high -= 1
-        if low <= high:
-            arr[low], arr[high] = arr[high], arr[low]
-            low+=1
-            high-=1
-    return low
-
+def partition_random(arr,low,high):
+    index = get_random_index(low, high,arr)
+   
+    arr[index], arr[high] = arr[high], arr[index]
+    return partition_high(arr, low, high)
 
 
 def partition_high(arr, low, high):
+    
+    pivot = arr[high]
+    pindex = low
+    
+    for i in range(low, high-1):
+        if arr[i] >= pivot:            
+            pindex+=1
+            
+    return pindex + 1
+
+def partition_high_weird(arr, low, high):
 
     pivot = arr[high]
     i = low - 1
     for j in range(low, high):
 
-        if arr[j] <= pivot:
+        if arr[j] <= pivot and i != j:
             i+=1
             arr[i], arr[j] = arr[j], arr[i]
 
@@ -63,8 +67,9 @@ def main(arr):
         return quicksort(arr,0,len(arr)-1)
 
 if __name__ == "__main__":
-    a = random_int_list(0,20,10)
-
+    a = list(range(20,0,-1))
+    #a = random_int_list(0,100,40)
+    a = [ 10, 8, 12, 15, 6, 3, 9, 5]
     print(a)
     main(a)
     print(a)

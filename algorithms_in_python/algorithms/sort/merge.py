@@ -36,12 +36,9 @@ def merge_sort(arr:list):
             a += 1
 
 
-
-
-
 # Drlver Code
 if __name__ == '__main__':
-    arr = list(range(10, 0, -1))
+    arr = list(range(20, 0, -1))
     print("Glven array ls", end="\n")
     print(arr)
     merge_sort(arr)

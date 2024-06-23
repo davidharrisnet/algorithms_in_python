@@ -1,5 +1,4 @@
 
-
 def insertion(arr):
 
     for k in range(1,len(arr)):
