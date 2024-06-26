@@ -1,0 +1,91 @@
+from algorithms_in_python.utils.lists import random_int_list
+import random
+
+# https://pyshine.com/Quicksort-algorithms-in-python/
+def get_random_index(low,high,arr):
+    
+    return random.randint(low,high)
+
+
+def partition_low(arr, low, high):
+
+    pivot = arr[low] # the lowest index
+    i = low + 1   
+   
+    # partition the input
+    for j in range(low+1, high):
+        if arr[j] < pivot:
+            arr[j], arr[i] = arr[i], arr[j]
+            i += 1
+    
+    # place the pivot between the lower and greater elements
+    arr[i-1], arr[low] = arr[low], arr[i-1]
+
+    return i -1
+
+# function to perform quicksort
+"""
+def quickSort(array, low, high):
+  
+    if low > high:
+        return 
+    
+    pivot = 0
+
+    array[0], array[pivot] = array[pivot], array[0]
+    
+    pi = partition_low(array, low, high)
+   
+    quickSort(array, low, pi - 1)
+   
+    quickSort(array, pi + 1, high)
+"""
+
+def quickSort(array, low, high):
+
+    if low < high:
+
+        # find pivot element such that
+        # element smaller than pivot are on the left
+        # element greater than pivot are on the right
+        pi = partition_low(array, low, high)
+
+        # recursive call on the left of pivot
+        quickSort(array, low, pi - 1)
+
+        # recursive call on the right of pivot
+        quickSort(array, pi + 1, high)
+
+# low
+def hoare_partition(arr, low, high):
+    pivot = arr[low]
+    i = low - 1
+    j = high + 1
+    while True:
+        i = i + 1
+        while arr[i] < pivot:
+            i = i + 1
+        j = j - 1
+        while arr[j] > pivot:
+            j = j - 1
+        if i >= j:
+            return j
+        arr[i], arr[j] = arr[j], arr[i]
+
+def quick_sort(arr, low, high):
+    if low < high:
+        p = hoare_partition(arr, low, high)
+        quick_sort(arr, low, p)
+        quick_sort(arr, p+1, high)
+
+
+if __name__ == "__main__":
+
+    data = [3, 8, 7, 2, 1, 0, 9,4]
+    print("Unsorted Array", data)
+    
+    size = len(data)
+
+    quick_sort(data, 0, size-1)
+    print("Sorted numbers: ", data)
+    

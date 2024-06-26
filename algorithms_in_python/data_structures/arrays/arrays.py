@@ -1,7 +1,7 @@
 from array import array
 import random
 
-wqs
+
 # https://docs.python.org/3/library/array.html
 
 """
@@ -19,11 +19,13 @@ size = 10
 def random_int():
     return random.randint(0, 1000)
 
-
-ints = [random_int() for _ in range(0, size)]
-int_array = array("i", ints)
+def random_array(size:int) -> array:
+    ints = [random_int() for _ in range(0, size)]
+    int_array = array("i", ints)
+    return int_array
 
 # insert
+int_array = random_array(10);
 int_array.insert(1, 60)
 
 i = int_array[3]

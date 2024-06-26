@@ -30,11 +30,8 @@ class LinkedList:
             curr_node.next = new_node
         self.length += 1
     def remove(self,node:Node):
+        pass
         
-
-
-
-
     def add_front(self,new_node:Node):
         if self.head is None:
             self.head = new_node
@@ -54,11 +51,19 @@ class LinkedList:
             self.head = None
             return None
         else:
+            currptr = self.head
+            nextptr = self.head.next
+            while nextptr.next is not None:
+                currptr = nextptr.next
+                nextptr = currptr.next
+            currptr.next = None
+            """
             second_last = self.head
             while second_last.next.next is not None:
                 second_last = second_last.next
             second_last.next = None
             return self.head
+            """
     def __str__(self):
 
         if self.head is None:
