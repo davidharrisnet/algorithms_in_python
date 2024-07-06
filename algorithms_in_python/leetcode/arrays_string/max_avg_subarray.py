@@ -3,18 +3,15 @@
 # value and return this value.
 
 def find_max_avg(nums, k):
-    # curr is the current sum of the window
-    curr = 0
-    for i in range(k):
-        curr += nums[i] # first windows of average size k
-    ans = curr
+    # curr is the current sum of the window    
+    ans = curr = sum(nums[:k])
+    
     for j in range(0, len(nums) -k):
         curr = curr + (nums[j + k] - nums[j])
         if curr > ans:
             ans = curr
 
     return ans/k
-
 
 if __name__ == "__main__":
     nums = [ 1, 12, -5, -6, 50, 3]
