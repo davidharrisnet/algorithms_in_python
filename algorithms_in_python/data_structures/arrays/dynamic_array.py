@@ -1,3 +1,5 @@
+import arrays
+
 class Array(object):
 
     def __init__(self, initial_size):  # Constructor
