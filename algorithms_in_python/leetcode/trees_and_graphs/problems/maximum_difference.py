@@ -1,10 +1,10 @@
 
-from algorithms_in_python.leetcode.trees_and_graphs import binary_tree
+from algorithms_in_python.leetcode.trees_and_graphs import binary_tree_random
 from algorithms_in_python.leetcode.trees_and_graphs.tree_node import TreeNode
 
-class MaxDifferenceTree(binary_tree.BinaryTree):
+class MaxDifferenceTree(binary_tree_random.BinaryTree):
     def __init__(self, arr=None):
-        binary_tree.BinaryTree.__init__(self)
+        binary_tree_random.BinaryTree.__init__(self)
         self.res = 0
         if arr:
             for i in arr:

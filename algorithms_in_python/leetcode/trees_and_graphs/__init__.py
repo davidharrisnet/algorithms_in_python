@@ -1,7 +1,7 @@
 
 
 from algorithms_in_python.leetcode.trees_and_graphs.tree_node import TreeNode
-from algorithms_in_python.leetcode.trees_and_graphs import binary_tree
+from algorithms_in_python.leetcode.trees_and_graphs import binary_tree_random
 
 def leet_code_bt():
     

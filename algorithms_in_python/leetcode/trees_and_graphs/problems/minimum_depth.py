@@ -1,6 +1,6 @@
 
 from algorithms_in_python import lists, TreeNode
-from binary_tree import BinaryTree
+from algorithms_in_python.leetcode.trees_and_graphs.binary_tree_random import BinaryTree
 from algorithms_in_python.leetcode.trees_and_graphs import leet_code_bt
 from collections import deque
 import sys

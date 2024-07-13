@@ -1,6 +1,6 @@
  
 from algorithms_in_python import lists
-from binary_tree import BinaryTree
+from algorithms_in_python.leetcode.trees_and_graphs.binary_tree_random import BinaryTree
 
 
 class GoodNode:

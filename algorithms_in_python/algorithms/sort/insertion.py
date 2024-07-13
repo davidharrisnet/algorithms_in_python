@@ -2,8 +2,8 @@
 def insertion(arr):
 
     for k in range(1,len(arr)):
-        key = arr[k]
-        l = k -1
+        key = arr[k]  # the key
+        l = k -1      # the element before key
         while l >=0 and key < arr[l]:
             arr[l+1] = arr[l]
             l-=1

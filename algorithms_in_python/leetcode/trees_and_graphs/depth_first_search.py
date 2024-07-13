@@ -1,17 +1,8 @@
 
 
-from algorithms_in_python.leetcode.trees_and_graphs.binary_tree import BinaryTree
+from algorithms_in_python.leetcode.trees_and_graphs.binary_tree_random import BinaryTree
 from algorithms_in_python.leetcode.trees_and_graphs.tree_node import TreeNode
 from algorithms_in_python.utils import lists
-
-root = TreeNode(0)
-root.left = TreeNode(1)
-root.right = TreeNode(2)
-root.right.right = TreeNode(5)
-
-root.left.left = TreeNode(3)
-root.left.right = TreeNode(4)
-root.left.right.right = TreeNode(6)
 
 def dfs(node):
     if node == None:
@@ -62,15 +53,30 @@ def postorder_dfs(node):
     return
 
 if __name__ == "__main__":
+    
+    root = TreeNode(4)
+    root.left = TreeNode(2)
+    root.left.left = TreeNode(1)
+    root.left.right = TreeNode(3)
+    
+    root.right = TreeNode(6)
+    root.right.left = TreeNode(5)
+    root.right.right = TreeNode(7)
+
+    
+
     print("pre order")
     preorder_dfs(root)
     print()
     print("in order")
- 
-    
+     
     inorder_dfs(root)
     print()
     print("post order")
     
     postorder_dfs(root)
     print()
+    
+    
+    
+

@@ -2,7 +2,7 @@ import random
 
 from algorithms_in_python.leetcode.trees_and_graphs.tree_node import TreeNode
     
-class BinaryTree:
+class BinaryTreeRandom:
     def __init__(self):
         self.root = None
         
@@ -25,35 +25,28 @@ class BinaryTree:
                 self._insert(newNode, currNode.left)
             else:
                 self._insert(newNode, currNode.right)
-    """
-    def _insert(self, newNode, currNode):
-        if newNode.val < currNode.val:
-            if currNode.left is None:
-                currNode.left = newNode
-            else:
-                self._insert(newNode, currNode.left)
-        else:
-            if currNode.right is None:
-                currNode.right = newNode
-            else:
-                self._insert(newNode, currNode.right)
-    """            
+           
     def printInorder(self,show_tree=True):
         self._printInorder(self.root, show_tree=show_tree)
         
     def _printInorder(self, root, space=0, show_tree=True, LEVEL_SPACE = 5 ):
+        '''
+            self._printInorder(root.left)
+            print(root.val)
+            self._printInorder(root.right))
+        '''
         if (root == None): 
             return
         else:
             if show_tree:
                 space += LEVEL_SPACE
-            self._printInorder(root.right, space=space,show_tree=show_tree)         
+            self._printInorder(root.left, space=space,show_tree=show_tree)         
             if show_tree:
                 for i in range(LEVEL_SPACE, space): print(end = " ")  
                 print("|" + str(root.val) + "|<")
             else:
                 print(root.val)
-            self._printInorder(root.left, space=space, show_tree=show_tree)
+            self._printInorder(root.right, space=space, show_tree=show_tree)
            
 
                 
@@ -84,6 +77,11 @@ class BinaryTree:
         self._printPreorder(self.root, show_tree=True)
         
     def _printPreorder(self, root, space=0, show_tree=True, LEVEL_SPACE = 5):
+        '''
+        print(root.val)
+        self._printPreorder(root.left)
+        self._printPreorder(root.right)
+        '''
         if (root == None): 
             return
         else:
@@ -136,6 +134,7 @@ class BinaryTree:
         
 if __name__ == "__main__":
     bt = BinaryTree()
+
     arr = [15, 10, 25, 6, 14, 20, 60]
     for i in arr:
         bt.insert(i)
