@@ -34,7 +34,7 @@ def quick_sort(arr, low, high):
 
 if __name__ == "__main__":
 
-    data = [3, 8, 7, 2, 1, 0, 9,4]
+    data = random_int_list(-20,20,10)
     print("Unsorted Array", data)
     
     size = len(data)

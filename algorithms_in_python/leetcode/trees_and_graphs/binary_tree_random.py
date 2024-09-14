@@ -133,7 +133,7 @@ class BinaryTreeRandom:
             return True
         
 if __name__ == "__main__":
-    bt = BinaryTree()
+    bt = BinaryTreeRandom()
 
     arr = [15, 10, 25, 6, 14, 20, 60]
     for i in arr:

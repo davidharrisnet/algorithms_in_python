@@ -1,6 +1,6 @@
 from algorithms_in_python.utils.lists import random_int_list
 import random
-
+from copy import copy, deepcopy
 # https://pyshine.com/Quicksort-algorithms-in-python/
 def get_random_index(low,high):
     
@@ -25,7 +25,7 @@ def partition_low(arr, low, high):
 
 def partition_high(arr, low, high):
     pivot = arr[high]  # Choose last element as pivot
-    i = low - 1       # Index of smaller element
+    i = low - 1        # Index of smaller element
 
     for j in range(low, high):
         if arr[j] <= pivot:  # If current element is smaller than or equal to pivot
@@ -35,18 +35,18 @@ def partition_high(arr, low, high):
     arr[i + 1], arr[high] = arr[high], arr[i + 1]  # Place pivot in its correct position
     return i + 1  # Return pivot index
 
-def partition_random(arr, start, end):
-    pi = random.randint(start,end)
-    arr[pi], arr[end] =  arr[end], arr[pi]
+def partition_random(arr, low, high):
+    pi = random.randint(low,high)
+    arr[pi], arr[high] =  arr[high], arr[pi]
        
-    pivot = arr[end]
-    i = start
-    for k in range(start, end):
-        if arr[k] <= pivot:
-            arr[k], arr[i] = arr[i], arr[k]
+    pivot = arr[high]
+    i = low
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            arr[j], arr[i] = arr[i], arr[j]
             i += 1
       
-    arr[i], arr[end] = arr[end], arr[i]
+    arr[i], arr[high] = arr[high], arr[i]
    
     # The array is divided into two sub-parts with the left part having all the elements smaller than the pivot and right part having elements bigger than the pivot.
     return i
@@ -126,10 +126,14 @@ def quick_sort(arr, low, high):
 if __name__ == "__main__":
 
     data = [3, 8, 7, 2, 1, 0, 9,4, 6,7,8]
-    print("Unsorted Array", data)
-    
+    print("Unsorted Array", data)    
     size = len(data)
-
+    data2 = copy(data)
+    
+    quickSortHigh(data2, 0, size-1)
+    print("High ", data2)
     quickSortRandom(data, 0, size-1)
-    print("Sorted numbers: ", data)
+    
+    
+    print("Random: ", data)
     

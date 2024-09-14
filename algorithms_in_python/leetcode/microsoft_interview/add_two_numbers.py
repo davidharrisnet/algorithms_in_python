@@ -4,55 +4,53 @@ class ListNode:
         self.next = next
 
 def addTwoNumbers(l1, l2):
-        h1 = l1
-        h2 = l2
-        head = None
-        sumList1 = sumList2 = ""
-        
-        while h1 and h2:
-            c1 = l1
-            n1 = l1.next
-
-            c2 = l2
-            n2 = l2.next
-                        
-            while n1 is not None:
-                sumList1 += str(c1.val)
-                c1 = n1                
-                n1 = n1.next
-                sumList2 += str(c2.val)
-                c2 = n2                
-                n2 = n2.next
-                                                            
-           
-            """
-            if head is None:
-                head = sumNode
-            else:
-                curr = head
-                next = head.next
-                while next is not None:
-                    curr = next
-                    next = next.next
-                curr.next = sumNode
-            """
+        l1str = ""
+        l2str = ""
+        l1curr = l1
+        l2curr = l2
+        while l1curr is not None:          
+           l1str += str(l1curr.val)
+           l1curr = l1curr.next           
+           if l2curr:
+               l2str += str(l2curr.val)
+               l2curr = l2curr.next               
+                                 
+        l1str = l1str[::-1]  
+        l2str = l2str[::-1]
+        sum = int(l1str) + int(l2str)
+        rsum = str(sum)[::-1]
+        head = ListNode(list(rsum)[0])
+        curr = head
+        for i in list(rsum[1:]):
+            curr.next = ListNode(i)
+            curr = curr.next
         return head
-        
 
+        
+           
 if __name__ == "__main__":
     
     #l1 = [2,4,3]
- 
-    l1 = ListNode(2)
-    l1.next = ListNode(4)
-    l1.next.next = ListNode(3)
     
+    l1arr = [9,9,9,9,9,9,9]
     
-    #l2 = [5,6,4]
-    l2 = ListNode(5)
-    l2.next = ListNode(6)
-    l2.next.next = ListNode(4)
+    l1head = ListNode(l1arr[0])
+    curr = l1head
+    for i in l1arr[1:]:
+        curr.next = ListNode(i)
+        curr = curr.next
+        
+    l2arr = [9,9,9,9]
+    l2head = ListNode(l2arr[0])
+    curr = l2head
+    for i in l2arr[1:]:
+        curr.next = ListNode(i)
+        curr = curr.next
     
-    res = addTwoNumbers(l1,l2)
-    print(res)
+           
+    res = addTwoNumbers(l1head,l2head)
+    curr = res
+    while curr is not None:
+        print(curr.val)
+        curr = curr.next
 

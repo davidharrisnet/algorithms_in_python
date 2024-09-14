@@ -7,7 +7,7 @@ class BinarySearchTree:
         self.root = None
         
     def insert(self,val):
-        if not val:
+        if val == None:
             return
         newNode = TreeNode(val)
         if not self.root:            
@@ -16,9 +16,9 @@ class BinarySearchTree:
             self._insert(newNode, self.root)
        
     def _insert(self,newNode, currNode):
-        if currNode.left is None:
-            currNode.left = newNode
-        elif currNode.right is None:
+        if currNode.left is None and newNode.val < currNode.val:
+            currNode.left = newNode 
+        elif currNode.right is None and newNode.val >= currNode.val:
             currNode.right = newNode           
         else:                   
             if newNode.val <= currNode.val:
@@ -135,17 +135,12 @@ class BinarySearchTree:
 if __name__ == "__main__":
     bt = BinarySearchTree()
 
-    arr = [i for i in range(0,10)]
+    arr = [5,6,7,4,3,2,8,0]
     for i in arr:
         bt.insert(i)
         
     print("Inorder")
     bt.printInorder()
-    print("\nPreOrder")
-    bt.printPreorder()
-    print("\nPostorder")
-    bt.printPostorder()
-    
-    print(bt.height())
-    print(bt.balanced())
-    
+   
+   
+   
