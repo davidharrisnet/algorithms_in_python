@@ -1,5 +1,5 @@
 
-from itertools import islice
+
 
 class Stack():
     
