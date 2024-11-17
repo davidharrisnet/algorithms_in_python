@@ -8,7 +8,7 @@
   * Trees
       * Binary Tree
       * Binary Search Tree
-      * AVL Tree
+      * AVL Tree [Example](https://www.geeksforgeeks.org/avl-tree-in-python/)
       * B-Tree
 ## Binary Trees
 [Operations](https://www.geeksforgeeks.org/binary-tree-data-structure/)
