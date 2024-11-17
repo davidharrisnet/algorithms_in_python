@@ -19,7 +19,8 @@ def check_if_palindrome(s):
     return True
 
 
-# Example 3: Given two sorted integer arrays arr1 and arr2, return a new array that combines both of them and is also sorted.
+# Example 3: Given two sorted integer arrays arr1 and arr2, return a new array that 
+# combines both of them and is also sorted.
 # This is the merge of merge_sort
 def combine(arr1, arr2):
     # ans is the answer
