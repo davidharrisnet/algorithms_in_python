@@ -63,24 +63,24 @@ class AVLTree:
         return root
 
     def delete(self, parent, value):
-        if not root:
-            return root
+        if not parent:
+            return parent
 
-        if value < root.value:
-            root.left = self.delete(root.left, value)
-        elif value > root.value:
-            root.right = self.delete(root.right, value)
+        if value < parent.value:
+            parent.left = self.delete(parent.left, value)
+        elif value > parent.value:
+            parent.right = self.delete(parent.right, value)
         else:
-            if not root.left:
-                temp = root.right
-                root = None
+            if not parent.left:
+                temp = parent.right
+                parent = None
                 return temp
-            elif not root.right:
-                temp = root.left
-                root = None
+            elif not parent.right:
+                temp = parent.left
+                parent = None
                 return temp
 
-            temp = self.min_value_node(root.right)
+            temp = self.min_value_node(parent.right)
             parent.value = temp.value
             parent.right = self.delete(parent.right, temp.value)
 
@@ -174,7 +174,7 @@ class AVLTree:
 
 # Example usage:
 if __name__ == "__main__":
-    arr = [5,6,7,4,3,3,3,3,3,2,8,0]
+    arr = [5,6,7,4,3,3,4,3,3,3,2,8,0]
     tree = AVLTree()
     for i in arr:
         tree.insert_value(i)
@@ -188,6 +188,6 @@ if __name__ == "__main__":
    
     result = tree.search_value(4)
     if result:
-        print("Node found")
+        print(f"Node {4} found")
     else:
         print("Node not found")
