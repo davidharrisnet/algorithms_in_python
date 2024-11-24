@@ -184,8 +184,6 @@ class BinarySearchTree(BinaryTreeInterface):
         return max(self.__height(node.left), self.__height(node.right)) + 1
 
 
-
-
     def print(self):
         self.inorder()
             

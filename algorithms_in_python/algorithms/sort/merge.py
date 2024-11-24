@@ -4,14 +4,13 @@ import algorithms_in_python.utils.lists as util
     
 
 def merge_sort(arr:list):
-    if len(arr) > 1:
-        # Find the midddle of the array
-        mld = len(arr) // 2
-        # Divide the array elements
-        L = arr[:mld]
-        # into 2 halves
-        R = arr[mld:]
-        # Sort the flrst half
+    if len(arr) > 1: # Only sort arrays of length greater than 1
+        # Find the middle of the array
+        mid = len(arr) // 2
+        # Divide the array elements # into 2 halves L and R
+        L = arr[:mid]        
+        R = arr[mid:]
+        # Sort the first half
         merge_sort(L)
         # Sort the second half
         merge_sort(R)
@@ -41,8 +40,8 @@ def merge_sort(arr:list):
 
 # Drlver Code
 if __name__ == '__main__':
-    arr = util.random_int_list(-10, 10, 20)
-    
+    #arr = util.random_int_list(-10, 10, 20)
+    arr = [4,3,5,6,2,1]
     print("Glven array ls", end="\n")
     print(arr)
     merge_sort(arr)

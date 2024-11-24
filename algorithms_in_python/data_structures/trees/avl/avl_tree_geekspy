@@ -6,38 +6,47 @@ class Node:
         self.left = None
         self.right = None
         self.height = 1
-
+        self.count = 1 # for duplicates
+        
 
 class AVLTree:
     def __init__(self):
         self.root = None
 
     def height(self, node):
-        if not node:
+        if not node: # None values have a height of 0
             return 0
         return node.height
 
     def balance(self, node):
         if not node:
             return 0
+        # left height - right height
         return self.height(node.left) - self.height(node.right)
 
+
+    def insert_value(self, value):
+        self.root = self.insert(self.root, value)
+        
     def insert(self, root, value):
         if not root:
             return Node(value)
         elif value < root.value:
-            root.left = self.insert(root.left, value)
+            root.left = self.insert(root.left, value) # recurse left
+        elif value > root.value:
+            root.right = self.insert(root.right, value) # recurse right
         else:
-            root.right = self.insert(root.right, value)
+            root.count += 1 # found a duplicate
 
         root.height = 1 + max(self.height(root.left), self.height(root.right))
+        
         balance = self.balance(root)
 
-        # Left rotation
+        # Right rotation
         if balance > 1 and value < root.left.value:
             return self.right_rotate(root)
 
-        # Right rotation
+        # Left rotation
         if balance < -1 and value > root.right.value:
             return self.left_rotate(root)
 
@@ -53,7 +62,7 @@ class AVLTree:
 
         return root
 
-    def delete(self, root, value):
+    def delete(self, parent, value):
         if not root:
             return root
 
@@ -72,34 +81,34 @@ class AVLTree:
                 return temp
 
             temp = self.min_value_node(root.right)
-            root.value = temp.value
-            root.right = self.delete(root.right, temp.value)
+            parent.value = temp.value
+            parent.right = self.delete(parent.right, temp.value)
 
-        if not root:
-            return root
+        if not parent:
+            return parent
 
-        root.height = 1 + max(self.height(root.left), self.height(root.right))
-        balance = self.balance(root)
+        parent.height = 1 + max(self.height(parent.left), self.height(parent.right))
+        balance = self.balance(parent)
 
         # Left rotation
-        if balance > 1 and self.balance(root.left) >= 0:
-            return self.right_rotate(root)
+        if balance > 1 and self.balance(parent.left) >= 0:
+            return self.right_rotate(parent)
 
         # Right rotation
-        if balance < -1 and self.balance(root.right) <= 0:
-            return self.left_rotate(root)
+        if balance < -1 and self.balance(parent.right) <= 0:
+            return self.left_rotate(parent)
 
         # Left-Right rotation
-        if balance > 1 and self.balance(root.left) < 0:
-            root.left = self.left_rotate(root.left)
-            return self.right_rotate(root)
+        if balance > 1 and self.balance(parent.left) < 0:
+            parent.left = self.left_rotate(parent.left)
+            return self.right_rotate(parent)
 
         # Right-Left rotation
-        if balance < -1 and self.balance(root.right) > 0:
-            root.right = self.right_rotate(root.right)
-            return self.left_rotate(root)
+        if balance < -1 and self.balance(parent.right) > 0:
+            parent.right = self.right_rotate(parent.right)
+            return self.left_rotate(parent)
 
-        return root
+        return parent
 
     def left_rotate(self, z):
         y = z.right
@@ -125,21 +134,22 @@ class AVLTree:
 
         return y
 
-    def min_value_node(self, root):
-        current = root
+    def min_value_node(self,parent):
+        # recurse left until you hit the bottom
+        current = parent
         while current.left:
             current = current.left
         return current
 
-    def search(self, root, value):
-        if not root or root.value == value:
-            return root
-        if root.value < value:
-            return self.search(root.right, value)
-        return self.search(root.left, value)
+    def search(self, parent, value):
+        if not parent or parent.value == value:
+            return parent # found or at the bottom
+        
+        if value > parent.value:
+            return self.search(parent.right, value) # search right
+        else:
+            return self.search(parent.left, value) # search left
 
-    def insert_value(self, value):
-        self.root = self.insert(self.root, value)
 
     def delete_value(self, value):
         self.root = self.delete(self.root, value)
@@ -156,12 +166,15 @@ class AVLTree:
             spaces += level_space
             self.__inorder(node.left,spaces)
             for i in range(level_space, spaces): print(end = " ")  
-            print("|" + str(node.value) + "|<")
+            if node.count == 1:
+                print("|" + str(node.value) + "|<")
+            else:
+                print("|" + str(node.value) + f" ({node.count})" + "|<")
             self.__inorder(node.right,spaces)
 
 # Example usage:
 if __name__ == "__main__":
-    arr = [5,6,7,4,3,2,8,0]
+    arr = [5,6,7,4,3,3,3,3,3,2,8,0]
     tree = AVLTree()
     for i in arr:
         tree.insert_value(i)

@@ -13,7 +13,7 @@ def bubble(arr:list):
 
 
 if __name__ == "__main__":
-    l = list(range(20, 0, -1))
+    l = list(range(10, 0, -1))
     print(l)
     bubble(l)
     print(l)
