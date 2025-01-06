@@ -1,8 +1,22 @@
-from binary_tree import BinaryTreeInterface, Node
 
+class Node:
+    def __init__(self, data):
+        self.data = data       
+        self.left = None
+        self.right = None
 
-class BinarySearchTree(BinaryTreeInterface):
+class BinarySearchTree:
+    """
+    https://www.geeksforgeeks.org/maximum-depth-or-height-of-a-binary-tree-with-python/
     
+    Binary Search Tree is a data structure used in computer science for 
+    organizing and storing data in a sorted manner. 
+    Binary search tree follows all properties of binary tree and for every nodes,
+    its left subtree contains values less than the node and the right subtree
+    contains values greater than the node. 
+    
+    This does not need to be balanced!
+    """
     def __init__(self):
         self.root:Node = None
         
@@ -198,9 +212,7 @@ class BinarySearchTree(BinaryTreeInterface):
             for i in range(level_space, spaces): print(end = " ")  
             print("|" + str(node.data) + "|<")
             self.__inorder(node.right,spaces)
-            
-
-            
+                        
 if __name__ == "__main__":
     
     arr = [5,6,7,4,3,2,8,0]

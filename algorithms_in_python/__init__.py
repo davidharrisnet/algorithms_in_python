@@ -1,0 +1,1 @@
+from .data_structures.trees.binary_search_tree import BinarySearchTree, Node

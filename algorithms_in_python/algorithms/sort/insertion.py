@@ -12,17 +12,21 @@ def insertion(arr):
         # k from  1 to the end of the array
 
         key = arr[i]  # select key at index k
+        print(f"key: {key}")
         j = i -1      # select the previous index l
+        
         '''
-        While l is greater than or equal to 0 
-            and the key is less than the the value at index l
-               move arr[l] tp arr[l+1]
+        While j is greater than or equal to 0 
+            and the key is less than the the value at index j
+               move arr[j] tp arr[j+1]
          '''
+         
         while j >=0 and key < arr[j]: 
             arr[j+1] = arr[j]
             j-=1
+            print(arr)
         arr[j+1] = key  # drop the key infront of the elements greater than it
-
+        print(arr)
 
 if __name__ == "__main__":
 

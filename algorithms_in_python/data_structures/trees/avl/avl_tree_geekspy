@@ -174,7 +174,8 @@ class AVLTree:
 
 # Example usage:
 if __name__ == "__main__":
-    arr = [5,6,7,4,3,3,4,3,3,3,2,8,0]
+    arr = [1,2,3 ]
+    print(arr)
     tree = AVLTree()
     for i in arr:
         tree.insert_value(i)
@@ -182,12 +183,9 @@ if __name__ == "__main__":
 
     print("Tree after insertion:")
     # In-order traversal to print the tree
-    tree.inorder()
-
-    tree.delete_value(20)
-   
-    result = tree.search_value(4)
-    if result:
-        print(f"Node {4} found")
-    else:
-        print("Node not found")
+    for i in arr:
+        tree.inorder()
+        print("_______________________")
+        print(f"deleting {i}")
+        tree.delete_value(i)
+       
