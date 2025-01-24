@@ -13,7 +13,7 @@ def insertion(arr):
 
         key = arr[i]  # select key at index k
         print(f"key: {key}")
-        j = i -1      # select the previous index l
+        j = i - 1      # select the previous index l
         
         '''
         While j is greater than or equal to 0 
@@ -25,7 +25,7 @@ def insertion(arr):
             arr[j+1] = arr[j]
             j-=1
             print(arr)
-        arr[j+1] = key  # drop the key infront of the elements greater than it
+        arr[j+1] = key  # place the key before the elements greater than it
         print(arr)
 
 if __name__ == "__main__":

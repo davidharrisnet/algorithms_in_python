@@ -1,8 +1,6 @@
 
 import algorithms_in_python.utils.lists as util
 
-    
-
 def merge_sort(arr:list):
     if len(arr) > 1: # Only sort arrays of length greater than 1
         # Find the middle of the array

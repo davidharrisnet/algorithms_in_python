@@ -2,11 +2,12 @@
 
 class Node:
     def __init__(self, value):
-        self.value = value
+        self.count = 1 # for duplicates
         self.left = None
         self.right = None
-        self.height = 1
-        self.count = 1 # for duplicates
+        self.height = 0
+        
+        self.value = value
         
 
 class AVLTree:
@@ -42,11 +43,11 @@ class AVLTree:
         
         balance = self.balance(root)
 
-        # Right rotation
+        # LL imbalance -> Right rotation
         if balance > 1 and value < root.left.value:
             return self.right_rotate(root)
 
-        # Left rotation
+        # RR imbalance -> Left rotation
         if balance < -1 and value > root.right.value:
             return self.left_rotate(root)
 
@@ -174,7 +175,7 @@ class AVLTree:
 
 # Example usage:
 if __name__ == "__main__":
-    arr = [1,2,3 ]
+    arr = [10, 20, 30, 15,0,1,4,5,6 ]
     print(arr)
     tree = AVLTree()
     for i in arr:
@@ -186,6 +187,6 @@ if __name__ == "__main__":
     for i in arr:
         tree.inorder()
         print("_______________________")
-        print(f"deleting {i}")
-        tree.delete_value(i)
+        #print(f"deleting {i}")
+        #tree.delete_value(i)
        
