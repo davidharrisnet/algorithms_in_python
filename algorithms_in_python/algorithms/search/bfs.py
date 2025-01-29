@@ -30,27 +30,23 @@ def connect(node1, node2):
 
 
 def visit(node):
-    print(node.val)
+    print(node.val, end=" ")  # visit
     node.visited = True
 
 
 def bfs(node):
-    visited = set()
-    q = queue.Queue()
-    q.put(node)
-    visited.add(node)
+    q = queue.Queue()  # create the queue
+    q.put(node)  # add the first node
+    node.visited = True  # add the node to visited
 
-    while q.qsize() > 0:
-        node = q.get()
-        '''
-          popleft() removes from the front - FIFO
-          set() is more efficient than list. In list all the elements shift left on 
-        '''
-        print(node.val, end=" ")
+    while q.qsize() > 0:  # while the queue is not empty
+        node = q.get()  # get the leftmost item ( FIFO )
 
-        for neighbor in node.links:
-            if neighbor not in visited:
-                visited.add(neighbor)
+        visit(node)  # visit
+
+        for neighbor in node.links:  # get all the links
+            if not neighbor.visited:  # not visited
+                neighbor.visited = True
                 q.put(neighbor)
 
 
@@ -70,10 +66,10 @@ if __name__ == "__main__":
 
     def create_graph():
         node = {}
-        print("------------------")
+
         for i in range(1, 10):
             node[i] = Node(i)
-        print("_________________")
+
         connect(node[1], node[2])
         connect(node[1], node[3])
         connect(node[2], node[4])
@@ -86,9 +82,6 @@ if __name__ == "__main__":
         return node
 
 
-
-
-    print("depth")
     nodes = create_graph()
 
     bfs(nodes[1])
