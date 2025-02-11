@@ -1,4 +1,4 @@
-from algorithms_in_python.utils.lists import getlist, random_int_list
+from algorithms_in_python.utils.lists import getlist, random_list
 import random
 
 # https://pyshine.com/Quicksort-algorithms-in-python/
@@ -29,21 +29,25 @@ def parition_random(arr, low, high):
         # switch the lower arr[i] with higher arr[j]
         arr[i], arr[j] = arr[j], arr[i]
 
-def quick_sort(arr, low, high):
+def quick(arr, low, high):
     if low < high:
         p = parition_random(arr, low, high)
-        quick_sort(arr, low, p)
-        quick_sort(arr, p+1, high)
+        quick(arr, low, p)
+        quick(arr, p+1, high)
 
+def quick_sort(arr):
+    quick(arr, 0, len(arr)-1)
+    return arr
+    
 
 if __name__ == "__main__":
 
-    data = getlist(20)
+    #data = getlist(200000)
+    data = random_list(0,10000,10000)
     
     print("Unsorted Array", data)
     
     size = len(data)
 
-    quick_sort(data, 0, size-1)
+    quick_sort(data)
     print("Sorted numbers: ", data)
-    

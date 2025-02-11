@@ -66,12 +66,13 @@ while i < n:
 i = 0
 while i < 3*n:                # 3n
     j = 10
-    while j <= 50:           # ( 40 + n**3)
+    while j <= 50:           # ( 50 )
         j += 1
     j = 0
-    while j < n**3:
+    while j < n**3:          # + n**3 )
         j += 2
     i += 1
-    # 3n * ( 40 + n**3/2) == n**4
+    # 3n * ( 50 + n**3/2) == n**4
+    # n * n**3
         
         
