@@ -13,12 +13,14 @@ def insertion(arr):
 
         key = arr[i]  # select key at index k
         print(f"key: {key}")
-        j = i - 1      # select the previous index l
+        j = i - 1      # select the previous index j
         
         '''
         While j is greater than or equal to 0 
             and the key is less than the the value at index j
                move arr[j] tp arr[j+1]
+         This will stop once key encounters arr[j] whicb is less than key.
+         This is the correct place for key.
          '''
          
         while j >=0 and key < arr[j]: 
