@@ -19,7 +19,7 @@ def insertion(arr):
         While j is greater than or equal to 0 
             and the key is less than the the value at index j
                move arr[j] tp arr[j+1]
-         This will stop once key encounters arr[j] whicb is less than key.
+         This will stop once key encounters arr[j] than is less than key.
          This is the correct place for key.
          '''
          
