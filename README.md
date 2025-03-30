@@ -1,3 +1,17 @@
+# Algorithms
+
+### Top Algorithms/Problems (Random)
+
+1.  Heap
+    1.  Minimum
+    2.  Maximum
+2.  HashMaps
+3.  Sliding Window
+4.  Binary Search
+5.  Recursion
+6.  Depth First Search/ Breach First Search
+
+
 # Data Structures 
 
 *   Linear
@@ -42,17 +56,6 @@
     3.  Scapegoat Trees - Galperin and Rivest 1993
     4.  Treaps - Seidel and Aragon 199
 
-# Algorithms
-
-### Top Algorithms/Problems
-
-1.  Heap
-    1.  Minimum
-    2.  Maximum
-2.  HashMaps
-3.  Sliding Window
-4.  Binary Search
-5.  Recursion
 
 ## Sorting
 
