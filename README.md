@@ -1,4 +1,4 @@
-# Algorithms
+
 
 ### Top Algorithms/Problems (Random)
 
@@ -56,7 +56,7 @@
     3.  Scapegoat Trees - Galperin and Rivest 1993
     4.  Treaps - Seidel and Aragon 199
 
-
+# Algorithms
 ## Sorting
 
 1.  Sort ( Algorithms/Sort)
