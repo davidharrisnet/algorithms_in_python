@@ -1,17 +1,5 @@
 
 
-### Top Algorithms/Problems (Random)
-
-1.  Heap
-    1.  Minimum
-    2.  Maximum
-2.  HashMaps
-3.  Sliding Window
-4.  Binary Search
-5.  Recursion
-6.  Depth First Search/ Breach First Search
-
-
 # Data Structures 
 
 *   Linear
@@ -67,4 +55,16 @@
         2.  Right
         3.  Random
 
+---
+
+### Top Algorithms/Problems (Random)
+
+1.  Heap
+    1.  Minimum
+    2.  Maximum
+2.  HashMaps
+3.  Sliding Window
+4.  Binary Search
+5.  Recursion
+6.  Depth First Search/ Breach First Search
 
