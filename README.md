@@ -26,8 +26,9 @@
      *  Breadth First Search
 
       * Balanced Binary Tree
-
-      *   [Example](https://www.programiz.com/dsa/balanced-binary-tree)
+         *   [Example](https://www.programiz.com/dsa/balanced-binary-tree)
+      * Complete Binary Tree
+         *     (Priority Queue or Heap )
 
 * Balanced Search Trees:
 
