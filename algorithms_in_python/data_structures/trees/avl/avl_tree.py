@@ -25,16 +25,16 @@ class AVLTree:
         return self.height(node.left) - self.height(node.right)
 
 
-    def insert_value(self, value):
-        self.root = self.insert(self.root, value)
+    def insert(self, value):
+        self.root = self.__insert(self.root, value)
         
-    def insert(self, parent, value):
+    def __insert(self, parent, value):
         if not parent:
             return Node(value)
         elif value < parent.value:
-            parent.left = self.insert(parent.left, value) # recurse left
+            parent.left = self.__insert(parent.left, value) # recurse left
         elif value > parent.value:
-            parent.right = self.insert(parent.right, value) # recurse right
+            parent.right = self.__insert(parent.right, value) # recurse right
         else:
             parent.count += 1 # found a duplicate
 
@@ -49,7 +49,10 @@ class AVLTree:
         elif value > parent.value:
             parent.right = self.delete(parent.right, value)
         else:
-            if not parent.left:
+            if parent.count > 1:
+                parent.count -= 1
+                return parent
+            elif not parent.left:                              
                 temp = parent.right
                 parent = None
                 return temp
@@ -72,49 +75,106 @@ class AVLTree:
         parent.height = 1 + max(self.height(parent.left), self.height(parent.right))
         balance = self.balance(parent)
 
-        # Left rotation
-        if balance ==2 and self.balance(parent.left) >= 0:
+        # Right rotationn (> 1 >=0)
+        if balance > 1 and self.balance(parent.left) >= 0:
             return self.right_rotate(parent)
-
-        # Right rotation
-        if balance == -2 and self.balance(parent.right) <= 0:
-            return self.left_rotate(parent)
-
-        # Left-Right rotation
-        if balance == 2 and self.balance(parent.left) < 0:
+        
+        # parent.left then Right rotation (> 1 < 0)
+        if balance >  1 and self.balance(parent.left) < 0:
             parent.left = self.left_rotate(parent.left)
             return self.right_rotate(parent)
 
-        # Right-Left rotation
-        if balance == -2 and self.balance(parent.right) > 0:
+        # Left rotation (< -1 <=0)
+        if balance < -1 and self.balance(parent.right) <= 0:
+            return self.left_rotate(parent)
+
+        # parent.right then Left rotation (< -1 > 0)
+        if balance < -1 and self.balance(parent.right) > 0:
             parent.right = self.right_rotate(parent.right)
             return self.left_rotate(parent)
 
         return parent
     
-    def left_rotate(self, z):
-        y = z.right
-        temp = y.left
+    def left_rotate(self, node):
+        
+        """
+        the balance of the left minus the right > 1
+        
+          A
+           \
+            C
+            /  \
+           D     E     
+    
+    
+        # r = node.right    
+        r =   C         
+            /  \
+           D     E  
+           
+        # temp = r.left
+        temp = D
+        
+         # r.left  = node
+         
+             C
+            / \
+           A   E
+            \
+             C
+            /  \
+           D     E 
+        
+        # node.right = temp
+                  
+              C     
+            /  \
+           A    E
+             \
+              D
+           
+     
+    # summary 
+    # balance 
+    
+          A
+            \
+             C
+            /  \
+           D     E  
+           
+    # after left rotation 
+    
+             C    
+            /  \
+           A    E
+             \
+              D
+        
+    """
+        
+        r = node.right
+        temp = r.left
 
-        y.left = z
-        z.right = temp
+        r.left = node
+        node.right = temp
 
-        z.height = 1 + max(self.height(z.left), self.height(z.right))
-        y.height = 1 + max(self.height(y.left), self.height(y.right))
+        node.height = 1 + max(self.height(node.left), self.height(node.right))
+        r.height = 1 + max(self.height(r.left), self.height(r.right))
 
-        return y
+        return r
 
-    def right_rotate(self, z):
-        y = z.left
-        temp = y.right
+    def right_rotate(self, node):
+        l = node.left
+        temp = l.right
 
-        y.right = z
-        z.left = temp
+        l.right = node
+        node.left = temp
 
-        z.height = 1 + max(self.height(z.left), self.height(z.right))
-        y.height = 1 + max(self.height(y.left), self.height(y.right))
+        node.height = 1 + max(self.height(node.left), self.height(node.right))
+        l.height = 1 + max(self.height(l.left), self.height(l.right))
 
-        return y
+        return l
 
     def min_value_node(self,parent):
         # recurse left until you hit the bottom
@@ -146,11 +206,8 @@ class AVLTree:
         if node is not None:
             spaces += level_space
             self.__inorder(node.left,spaces)
-            for i in range(level_space, spaces): print(end = " ")  
-            if node.count == 1:
-                print("|" + str(node.value) + "|<")
-            else:
-                print("|" + str(node.value) + f" ({node.count})" + "|<")
+            for i in range(level_space, spaces): print(end = " ")          
+            print("|" + str(node.value) + f" ({node.count})" + "|<")
             self.__inorder(node.right,spaces)
 
 # Example usage:
@@ -159,12 +216,19 @@ if __name__ == "__main__":
     print(arr)
     tree = AVLTree()
     for i in arr:
-        tree.insert_value(i)
+        tree.insert(i)
+    for i in arr:
+        tree.insert(i)
+    tree.inorder()
     
 
     print("Tree after insertion:")
     # In-order traversal to print the tree
     for i in arr:
+        #tree.inorder()
+        tree.delete_value(i)
+    tree.inorder()
+    print("-------------------------------")
+    for i in arr:
         tree.inorder()
         tree.delete_value(i)
-        print("_______________________")

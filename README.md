@@ -1,27 +1,69 @@
 # Data Structures
 
-*   Linear
-    *   Array
-    *   Stack
-    *   Queue
-    *   Linked List
-*   Non Linear
-    *   Trees
-        *   Binary Tree
-        *   Binary Search Tree
-        *   AVL Tree [Example](%5Bhttps://www.geeksforgeeks.org/avl-tree-in-python/%5D(https://www.datacamp.com/tutorial/avl-tree))
-        *   B-Tree
 
-## Binary Trees
+##   Linear
+###   Array
+* Python has dynamic arrays.
+    * append() adds to the end
+    * pop() removes from the end (b = a.pop())
+    * remove() -- removes the first occurance of an element
+    * sorting --
+        list.sort() is provided, but also sorted()
+        * if a list has objects, sorted can work on any iterable
+
+    ```
+           sorted(a, key=lambda o : o['name'], reverse=True)
+    ```
+    * [cpython sort](https://github.com/python/cpython/blob/main/Objects/listsort.txt) -- optimized mergesort - timsort
+###   Stack
+* FIFO 
+    * Can use python list append() pop()
+    * Can use a linked list
+    * Can use collections deque ( See Queue )
+```
+        import collections deque
+        a = deque()
+        a.append(1) # [1]
+        a.append(2) # [1,2]
+        a.pop() # [1]
+```
+
+    
+###   Queue
+* LIFO -- like a line 
+* Can use list append(), pop(0)
+    * This is O(N) so not advised for large lengths 
+    *  Can use a linked list with pointers to the head and end node.
+
+   * python has - collections deque
+```
+        import collections deque
+        a = deque()
+        a.append(1) # [1]
+        a.append(2) # [1,2]
+        a.popleft() # [2]
+```
+    
+## Non Linear
+### Trees
+#### Binary Tree
+##### Binary Search Tree
+
+## Binary Tree
+### Depth First Search
 
 *   [Operations](https://www.geeksforgeeks.org/binary-tree-data-structure/)
 *   Inorder Traversal
 *   Preorder Traversal
 *   Postorder Traversal
 
-## Balanced Binary Tree
+### Breadth First Search
 
-*   [Example](https://www.programiz.com/dsa/balanced-binary-tree)
+## Balanced Binary Tree
+* AVL Tree [Example](%5Bhttps://www.geeksforgeeks.org/avl-tree-in-python/%5D(https://www.datacamp.com/tutorial/avl-tree))
+* B-Tree
+
+*   [Discussion Programiz ](https://www.programiz.com/dsa/balanced-binary-tree)
 
 ### Balanced Search Trees:
 

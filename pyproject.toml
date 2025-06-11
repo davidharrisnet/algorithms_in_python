@@ -1,6 +1,13 @@
+
+[build-system]
+requires = ["setuptools"]
+
 [project]
-name = "algorithms_in_python"
+name = "algs"
 version = "0.0.1"
 
-description = "My package description"
+description = "Data Structures and Algorithms"
 readme = "README.md"
+
+[tool.setuptools.packages.find]
+where = ["."]

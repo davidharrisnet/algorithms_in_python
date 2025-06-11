@@ -13,44 +13,7 @@ Depth First Search
 
 """
 
-
-class Node:
-    def __init__(self, val):
-        self.val = val
-        self.links = []
-        self.visited = False
-
-    def __iter__(self):
-        return self.val
-
-
-def connect(node1, node2):
-    node1.links.append(node2)
-    node2.links.append(node1)
-
-
-def visit(node):
-    print(node.val)
-    node.visited = True
-
-def visit(node):
-    print(node.val, end=" ")  # visit
-
-def bfs(node):
-    visited = set()       # create an empty set
-    q = queue.Queue()     # create the queue
-    q.put(node)           # add the first node
-    visited.add(node)     # add the node to visited
-
-    while q.qsize() > 0:  # while the queue is not empty
-        node = q.get()    # get the leftmost item ( FIFO )
-
-        visit(node)       # visit
-
-        for neighbor in node.links:       # get all the links
-            if neighbor not in visited:   # not visited
-                visited.add(neighbor)
-                q.put(neighbor)
+from algs.datastructures.trees import binary_search_tree
 
 
 if __name__ == "__main__":
