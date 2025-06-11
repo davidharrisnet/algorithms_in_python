@@ -227,6 +227,7 @@ if __name__ == "__main__":
     for i in arr:
         #tree.inorder()
         tree.delete_value(i)
+
     tree.inorder()
     print("-------------------------------")
     for i in arr:

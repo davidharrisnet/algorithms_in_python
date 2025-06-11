@@ -11,18 +11,18 @@ def insertion(arr):
     for i in range(1,len(arr)): 
         # k from  1 to the end of the array
 
-        key = arr[i]  # select key at index                  
-        print(key)
-        j = i - 1      # select the previous index           
+
+        key = arr[i]  # select key at index k
+        print(f"key: {key}")
+        j = i - 1      # select the previous index j
         
         '''
-        While j is >= 0 and the arr[j] is > than key 
-            move arr[j] up to arr[j+1] // move larger values up until arr[j] <= key
-            j-=1
-        place key in the spot past the last arr[j] <= key
-        
-        key = 6
-        2,3,4,4,7 -> 2,3,4,6,7
+        While j is greater than or equal to 0 
+            and the key is less than the the value at index j
+               move arr[j] tp arr[j+1]
+         This will stop once key encounters arr[j] that is less than key.
+         This is the correct place for key.
+8
          '''
          
         while j >= 0 and arr[j] > key:                   

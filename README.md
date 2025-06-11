@@ -1,5 +1,6 @@
-# Data Structures
 
+
+# Data Structures 
 
 ##   Linear
 ###   Array
@@ -51,11 +52,36 @@
 
 ## Binary Tree
 ### Depth First Search
+=======
+*   Linear
+    *   Array
+    *   Stack
+    *   Queue
+       * Priority Queue  
+    *   Linked List
+       * Single
+       * Double      
+*   Non Linear   
+    *   Trees
+        *   Binary Tree
+        *   Binary Search Tree
+        *   AVL Tree [Example](%5Bhttps://www.geeksforgeeks.org/avl-tree-in-python/%5D(https://www.datacamp.com/tutorial/avl-tree))
+        *   B-Tree
+   * Binary Trees
 
-*   [Operations](https://www.geeksforgeeks.org/binary-tree-data-structure/)
-*   Inorder Traversal
-*   Preorder Traversal
-*   Postorder Traversal
+      *   [Operations](https://www.geeksforgeeks.org/binary-tree-data-structure/)
+      *   Depth First Search
+         *  Inorder Traversal
+         *   Preorder Traversal
+         *   Postorder Traversal
+     *  Breadth First Search
+
+
+      * Balanced Binary Tree
+         *   [Example](https://www.programiz.com/dsa/balanced-binary-tree)
+      * Complete Binary Tree
+         *     (Priority Queue or Heap )
+
 
 ### Breadth First Search
 
@@ -66,10 +92,12 @@
 *   [Discussion Programiz ](https://www.programiz.com/dsa/balanced-binary-tree)
 
 ### Balanced Search Trees:
+=======
+* Balanced Search Trees:
 
 [MIT](https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/83cdd705cd418d10d9769b741e34a2b8_MIT6_006F11_lec06.pdf)
 
-#### There are many balanced search trees.
+* There are many balanced search trees.
 
 1.  AVL Trees - Adelson-Velsii and Landis 1962
 2.  B-Trees/2-3-4 Trees - .Bayer and McCreight 1972 (see CLRS 18
@@ -81,17 +109,6 @@
     4.  Treaps - Seidel and Aragon 199
 
 # Algorithms
-
-### Top Algorithms/Problems
-
-1.  Heap
-    1.  Minimum
-    2.  Maximum
-2.  HashMaps
-3.  Sliding Window
-4.  Binary Search
-5.  Recursion
-
 ## Sorting
 
 1.  Sort ( Algorithms/Sort)
@@ -102,30 +119,16 @@
         2.  Right
         3.  Random
 
-## Trees
+---
 
-1.  Binary Search Tree
-2.  Bread-First Search
-3.  Depth-First Search
-    1.  In Order
-    2.  Pre Order
-    3.  Post Order
-4.  Greedy Algorithm
+### Top Algorithms/Problems (Random)
 
-## Lists
+1.  Heap
+    1.  Minimum
+    2.  Maximum
+2.  HashMaps
+3.  Sliding Window
+4.  Binary Search
+5.  Recursion
+6.  Depth First Search/ Breach First Search
 
-LinkedList
-
-1.  Single
-2.  Double
-
-Queue
-
-Stack
-
-Priority Queue
-
-## Problems
-
-1.  Window
-2.  Tree Depth
